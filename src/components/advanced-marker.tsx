@@ -79,7 +79,12 @@ function useAdvancedMarker(props: AdvancedMarkerProps) {
     // create container for marker content if there are children
     if (numChilds > 0) {
       const el = document.createElement('div');
-      if (className) el.classList.add(className);
+
+      if (className) {
+        // className may have space-separated multiple class names
+        const classNames = className.split(' ')
+        el.classList.add(...classNames);
+      }
 
       newMarker.content = el;
 
